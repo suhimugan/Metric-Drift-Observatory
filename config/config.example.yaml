@@ -1,0 +1,55 @@
+# config.example.yaml
+#
+# Copy this file to config.yaml and fill in your own values.
+# config.yaml is git-ignored — never commit real storage account
+# names, workspace URLs, or any credential to this repo.
+#
+# Secrets (access keys, service principal client secrets, SAS tokens)
+# do NOT belong in this file at all, even in the real config.yaml.
+# In Databricks, pull them at runtime from Azure Key Vault via a
+# secret scope, e.g.:
+#   dbutils.secrets.get(scope="mdo-kv-scope", key="adls-access-key")
+
+storage_account: "<your_storage_account>"
+
+containers:
+  bronze: "bronze"
+  silver: "silver"
+  metadata: "metadata"
+
+paths:
+  bronze_raw: "abfss://bronze@<your_storage_account>.dfs.core.windows.net/customer_transactions/"
+  silver_table: "abfss://silver@<your_storage_account>.dfs.core.windows.net/customer_transactions/"
+  quality_results: "abfss://metadata@<your_storage_account>.dfs.core.windows.net/quality_results/"
+  metric_drift_results: "abfss://metadata@<your_storage_account>.dfs.core.windows.net/metric_drift_results/"
+  sql_drift_results: "abfss://metadata@<your_storage_account>.dfs.core.windows.net/sql_drift_results/"
+  reliability_score: "abfss://metadata@<your_storage_account>.dfs.core.windows.net/reliability_score/"
+
+tables:
+  silver: "customer_transactions_silver"
+  quality_results: "quality_results_delta"
+  metric_drift_results: "metric_drift_results_delta"
+  sql_drift_results: "sql_drift_results_delta"
+  reliability_score: "reliability_score_delta"
+
+quality_score_weights:
+  completeness: 0.3
+  uniqueness: 0.3
+  schema: 0.2
+  rules: 0.2
+
+drift_score_weights:
+  volume: 0.15
+  numeric: 0.30
+  category: 0.20
+  correlation: 0.15
+  kpi: 0.20
+
+reliability_score_weights:
+  data_quality: 0.4
+  metric_stability: 0.35
+  sql_stability: 0.25
+
+health_bands:
+  healthy: 0.85
+  watch: 0.65

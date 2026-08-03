@@ -1,0 +1,8 @@
+data_quality_score,dataset_name,explanation,health_status,metric_stability_score,reliability_score,run_date,sql_stability_score
+89.03,customer_transactions,"Reliability reduced because:
+- SQL change detected: Aggregation Logic
+- SQL change detected: Column Removal
+- null_validation failures increased
+- null_validation failures increased
+- null_validation failures increased
+- null_validation failures increased",GOOD,90,80,2026-07-29T09:24:47.564723Z,40

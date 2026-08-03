@@ -1,0 +1,4 @@
+change_type,changed_component,description,risk_score,run_date,severity,similarity_score,sql_file
+METRIC_LOGIC_CHANGE,Filter Condition,Business filtering criteria changed,90,2026-07-29T09:06:33.276068Z,MEDIUM,71.72,customer_revenue_v2.sql
+METRIC_LOGIC_CHANGE,Aggregation Logic,Business metric aggregation changed,90,2026-07-29T09:06:33.276061Z,HIGH,71.72,customer_revenue_v2.sql
+METRIC_LOGIC_CHANGE,Column Removal,Existing column removed,90,2026-07-29T09:06:33.276072Z,HIGH,71.72,customer_revenue_v2.sql

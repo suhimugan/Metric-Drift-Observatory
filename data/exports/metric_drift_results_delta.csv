@@ -1,0 +1,8 @@
+run_date,comparison_period,metric_name,drift_type,old_value,new_value,change_percentage,drift_score,severity,description
+2026-07-29T09:10:35.099807Z,day1_vs_day2,Numeric Features,Numeric Drift,null,null,null,14.44149274602733,LOW,Statistical change across numerical features
+2026-07-29T09:10:35.099807Z,day1_vs_day2,Population Stability,PSI,null,null,null,7.559258124680385,LOW,Population distribution change
+2026-07-29T09:10:35.099807Z,day1_vs_day2,Categorical Features,Category Drift,null,null,null,1.4552103896103894,LOW,Category distribution change
+2026-07-29T09:10:35.099807Z,day1_vs_day2,Correlation,Correlation Drift,null,null,null,2.637989634006945,LOW,Correlation relationship change
+2026-07-29T09:10:35.099807Z,day1_vs_day2,Business KPI,KPI Drift,null,null,null,16.705572207452047,LOW,"Revenue, profit and operational KPI change"
+2026-07-29T09:10:35.099807Z,day1_vs_day2,Overall,Composite,null,null,null,8.48810407063699,LOW,Weighted drift score
+2026-07-29T09:10:35.099807Z,day1_vs_day2,Volume,Volume Drift,100000,100000,0,0,LOW,Daily record count change

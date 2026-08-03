@@ -1,0 +1,82 @@
+# ===== Secrets / Config =====
+
+*.env*
+*.env.*
+
+# Allow safe template file
+!.env.example
+
+config/config.yaml
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.python-version
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# ===== Jupyter / Databricks =====
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+.databricks/
+.databricks-connect
+databricks.cfg
+*.dbc
+
+# ===== VS Code =====
+.vscode/
+*.code-workspace
+
+# ===== Azure =====
+*.publishsettings
+.azure/
+
+# ===== Data =====
+
+# Ignore large/raw datasets
+data/bronze/*.csv
+
+# Ignore Spark/Delta outputs
+data/**/*.parquet
+data/**/_delta_log/
+
+# Keep portfolio exports
+!data/exports/
+!data/exports/**/*.csv
+!data/bronze/README.md
+
+# ===== OS / Temp files =====
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+*.bak
+.idea/
+
+# ===== Delta / Spark local artifacts =====
+spark-warehouse/
+metastore_db/
+derby.log
+dashboard/*.pbix
+
+# Power BI temporary/cache files
+*.pbit
+*.tmp
+
+# ===== Large Files =====
+
+*.zip
+*.7z
+*.rar

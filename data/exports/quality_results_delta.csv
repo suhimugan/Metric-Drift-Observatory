@@ -1,0 +1,9 @@
+dataset_name,rule_name,column_name,failed_records,total_records,failure_percentage,quality_score,status,run_date
+customer_transactions,duplicate_transaction_check,transaction_id,0,300000,0,72.92801495726496,PASS,2026-07-29T09:10:22.726008Z
+customer_transactions,duplicate_transaction_check,transaction_id,0,300000,0,72.92801495726496,PASS,2026-07-29T05:31:47.411039Z
+customer_transactions,duplicate_transaction_check,transaction_id,0,300000,0,72.92801495726496,PASS,2026-07-28T14:48:05.627798Z
+customer_transactions,duplicate_transaction_check,transaction_id,0,300000,0,72.92801495726496,PASS,2026-07-28T10:43:35.710458Z
+customer_transactions,null_validation,all_columns,131618,300000,43.87266666666667,72.92801495726496,FAIL,2026-07-28T10:43:35.710458Z
+customer_transactions,null_validation,all_columns,131618,300000,43.87266666666667,72.92801495726496,FAIL,2026-07-29T05:31:47.411039Z
+customer_transactions,null_validation,all_columns,131618,300000,43.87266666666667,72.92801495726496,FAIL,2026-07-28T14:48:05.627798Z
+customer_transactions,null_validation,all_columns,131618,300000,43.87266666666667,72.92801495726496,FAIL,2026-07-29T09:10:22.726008Z
