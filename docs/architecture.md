@@ -60,6 +60,4 @@ Delta Lake was chosen over plain Parquet for every layer because the project nee
 - **Schema enforcement** to make schema drift *detectable* rather than silently accepted
 - **Time travel** so historical reliability scores and drift results remain queryable for trend analysis in Power BI
 
-## Screenshot placement
 
-This doc is where Azure Portal / Databricks workspace screenshots referenced in the README's "Dashboard Preview" section conceptually belong — see `images/` and the naming convention in the main README.
