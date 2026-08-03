@@ -240,8 +240,8 @@ This is a **portfolio project** built on Azure free-tier resources with **synthe
 
 ## Author
 
-**[Your Name]** — Aspiring Azure Data Engineer
-[LinkedIn](#) · [GitHub](#) · [Portfolio](#)
+**Suhimugan Kennadi** — Aspiring Azure Data Engineer
+https://www.linkedin.com/in/suhimugankennadi/· https://medium.com/@suhimugankennadi
 
 ---
 
