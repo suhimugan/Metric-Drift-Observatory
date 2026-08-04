@@ -1,0 +1,350 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "mdo-dev-adf"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://mdodevcindlake.dfs.core.windows.net/"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "day1.csv",
+						"folderPath": "customer_transactions",
+						"fileSystem": "bronze"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "customer_id",
+						"type": "String"
+					},
+					{
+						"name": "customer_name",
+						"type": "String"
+					},
+					{
+						"name": "customer_age",
+						"type": "String"
+					},
+					{
+						"name": "customer_gender",
+						"type": "String"
+					},
+					{
+						"name": "customer_segment",
+						"type": "String"
+					},
+					{
+						"name": "loyalty_tier",
+						"type": "String"
+					},
+					{
+						"name": "country",
+						"type": "String"
+					},
+					{
+						"name": "state",
+						"type": "String"
+					},
+					{
+						"name": "city",
+						"type": "String"
+					},
+					{
+						"name": "region",
+						"type": "String"
+					},
+					{
+						"name": "product_id",
+						"type": "String"
+					},
+					{
+						"name": "product_name",
+						"type": "String"
+					},
+					{
+						"name": "product_category",
+						"type": "String"
+					},
+					{
+						"name": "subcategory",
+						"type": "String"
+					},
+					{
+						"name": "brand",
+						"type": "String"
+					},
+					{
+						"name": "transaction_id",
+						"type": "String"
+					},
+					{
+						"name": "order_date",
+						"type": "String"
+					},
+					{
+						"name": "shipment_date",
+						"type": "String"
+					},
+					{
+						"name": "payment_method",
+						"type": "String"
+					},
+					{
+						"name": "sales_channel",
+						"type": "String"
+					},
+					{
+						"name": "currency",
+						"type": "String"
+					},
+					{
+						"name": "quantity",
+						"type": "String"
+					},
+					{
+						"name": "unit_price",
+						"type": "String"
+					},
+					{
+						"name": "discount",
+						"type": "String"
+					},
+					{
+						"name": "tax",
+						"type": "String"
+					},
+					{
+						"name": "shipping_cost",
+						"type": "String"
+					},
+					{
+						"name": "total_sales",
+						"type": "String"
+					},
+					{
+						"name": "profit",
+						"type": "String"
+					},
+					{
+						"name": "profit_margin",
+						"type": "String"
+					},
+					{
+						"name": "warehouse",
+						"type": "String"
+					},
+					{
+						"name": "delivery_days",
+						"type": "String"
+					},
+					{
+						"name": "supplier",
+						"type": "String"
+					},
+					{
+						"name": "inventory_level",
+						"type": "String"
+					},
+					{
+						"name": "return_flag",
+						"type": "String"
+					},
+					{
+						"name": "website_visits",
+						"type": "String"
+					},
+					{
+						"name": "cart_size",
+						"type": "String"
+					},
+					{
+						"name": "coupon_used",
+						"type": "String"
+					},
+					{
+						"name": "session_duration",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          customer_id as string,",
+						"          customer_name as string,",
+						"          customer_age as string,",
+						"          customer_gender as string,",
+						"          customer_segment as string,",
+						"          loyalty_tier as string,",
+						"          country as string,",
+						"          state as string,",
+						"          city as string,",
+						"          region as string,",
+						"          product_id as string,",
+						"          product_name as string,",
+						"          product_category as string,",
+						"          subcategory as string,",
+						"          brand as string,",
+						"          transaction_id as string,",
+						"          order_date as string,",
+						"          shipment_date as string,",
+						"          payment_method as string,",
+						"          sales_channel as string,",
+						"          currency as string,",
+						"          quantity as string,",
+						"          unit_price as string,",
+						"          discount as string,",
+						"          tax as string,",
+						"          shipping_cost as string,",
+						"          total_sales as string,",
+						"          profit as string,",
+						"          profit_margin as string,",
+						"          warehouse as string,",
+						"          delivery_days as string,",
+						"          supplier as string,",
+						"          inventory_level as string,",
+						"          return_flag as string,",
+						"          website_visits as string,",
+						"          cart_size as string,",
+						"          coupon_used as string,",
+						"          session_duration as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source1",
+						"source1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          customer_id as string,",
+						"          customer_name as string,",
+						"          customer_age as string,",
+						"          customer_gender as string,",
+						"          customer_segment as string,",
+						"          loyalty_tier as string,",
+						"          country as string,",
+						"          state as string,",
+						"          city as string,",
+						"          region as string,",
+						"          product_id as string,",
+						"          product_name as string,",
+						"          product_category as string,",
+						"          subcategory as string,",
+						"          brand as string,",
+						"          transaction_id as string,",
+						"          order_date as string,",
+						"          shipment_date as string,",
+						"          payment_method as string,",
+						"          sales_channel as string,",
+						"          currency as string,",
+						"          quantity as string,",
+						"          unit_price as string,",
+						"          discount as string,",
+						"          tax as string,",
+						"          shipping_cost as string,",
+						"          total_sales as string,",
+						"          profit as string,",
+						"          profit_margin as string,",
+						"          warehouse as string,",
+						"          delivery_days as string,",
+						"          supplier as string,",
+						"          inventory_level as string,",
+						"          return_flag as string,",
+						"          website_visits as string,",
+						"          cart_size as string,",
+						"          coupon_used as string,",
+						"          session_duration as string",
+						"     ),",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     partitionBy('hash', 2,",
+						"          customer_id",
+						"     )) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
+			]
+		}
+	]
+}
