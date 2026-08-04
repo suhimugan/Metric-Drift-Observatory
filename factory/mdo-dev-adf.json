@@ -1,0 +1,15 @@
+{
+	"name": "mdo-dev-adf",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c024f43f-88c2-465e-99cf-a18538c82462",
+		"tenantId": "85f2aa69-63db-44bd-a437-5e2e9bddbb05"
+	}
+}
