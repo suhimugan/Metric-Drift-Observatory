@@ -1,0 +1,177 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "day1.csv",
+				"folderPath": "customer_transactions",
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "customer_id",
+				"type": "String"
+			},
+			{
+				"name": "customer_name",
+				"type": "String"
+			},
+			{
+				"name": "customer_age",
+				"type": "String"
+			},
+			{
+				"name": "customer_gender",
+				"type": "String"
+			},
+			{
+				"name": "customer_segment",
+				"type": "String"
+			},
+			{
+				"name": "loyalty_tier",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "region",
+				"type": "String"
+			},
+			{
+				"name": "product_id",
+				"type": "String"
+			},
+			{
+				"name": "product_name",
+				"type": "String"
+			},
+			{
+				"name": "product_category",
+				"type": "String"
+			},
+			{
+				"name": "subcategory",
+				"type": "String"
+			},
+			{
+				"name": "brand",
+				"type": "String"
+			},
+			{
+				"name": "transaction_id",
+				"type": "String"
+			},
+			{
+				"name": "order_date",
+				"type": "String"
+			},
+			{
+				"name": "shipment_date",
+				"type": "String"
+			},
+			{
+				"name": "payment_method",
+				"type": "String"
+			},
+			{
+				"name": "sales_channel",
+				"type": "String"
+			},
+			{
+				"name": "currency",
+				"type": "String"
+			},
+			{
+				"name": "quantity",
+				"type": "String"
+			},
+			{
+				"name": "unit_price",
+				"type": "String"
+			},
+			{
+				"name": "discount",
+				"type": "String"
+			},
+			{
+				"name": "tax",
+				"type": "String"
+			},
+			{
+				"name": "shipping_cost",
+				"type": "String"
+			},
+			{
+				"name": "total_sales",
+				"type": "String"
+			},
+			{
+				"name": "profit",
+				"type": "String"
+			},
+			{
+				"name": "profit_margin",
+				"type": "String"
+			},
+			{
+				"name": "warehouse",
+				"type": "String"
+			},
+			{
+				"name": "delivery_days",
+				"type": "String"
+			},
+			{
+				"name": "supplier",
+				"type": "String"
+			},
+			{
+				"name": "inventory_level",
+				"type": "String"
+			},
+			{
+				"name": "return_flag",
+				"type": "String"
+			},
+			{
+				"name": "website_visits",
+				"type": "String"
+			},
+			{
+				"name": "cart_size",
+				"type": "String"
+			},
+			{
+				"name": "coupon_used",
+				"type": "String"
+			},
+			{
+				"name": "session_duration",
+				"type": "String"
+			}
+		]
+	}
+}
